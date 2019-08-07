@@ -43,11 +43,15 @@ var currentSongInfo = data.toString().split(/\s*(?:;|$)\s*/);
 var moment = require('moment');
 var currentTime = (moment().format('MMMM Do h:mm a')) + " ";
 
+
 console.log(`Watching for file changes on ${nowPlayingFile}`);
 
 fs.watchFile(nowPlayingFile, { interval: 1000 }, (curr, prev) => {
 
-    var stream = fs.createWriteStream("recentlyPlayed.txt", { flags: 'a' });
+    
+
+    var jsonString = JSON.stringify(currentSongInfo);
+    console.log(jsonString);
 
     currentArtist = currentSongInfo[0];
     currentSong = currentSongInfo[1];
@@ -56,7 +60,8 @@ fs.watchFile(nowPlayingFile, { interval: 1000 }, (curr, prev) => {
     console.log("Artist: " + currentArtist);
     console.log("Song: " + currentSong);
     console.log("Record: " + currentRecord);
-
+    
+    var stream = fs.createWriteStream("recentlyPlayed.txt", { flags: 'a' });
     stream.write(currentTime);
     currentSongInfo.forEach(function (item){
             stream.write(item + ' ' );
@@ -76,7 +81,7 @@ fs.watchFile('./recentlyPlayed.txt', { interval: 1000 }, (curr, prev) => {
         .on('data', chunk => {
             for (i=0; i < chunk.length; ++i) 
                 if (chunk[i] == 10) count++;
-                if(count > 10){
+                if(count > 1000){
                     fs.writeFile("./recentlyPlayed.txt", tempData , function(){console.log("count: " + count);})
                     count = 0;
                 }
