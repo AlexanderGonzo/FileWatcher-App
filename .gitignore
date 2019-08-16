@@ -5,6 +5,7 @@ node_modules/
 # File Type #
 #############
 *.txt
+.json
 
 # Packages #
 ############
