@@ -35,7 +35,7 @@ class Handler(FileSystemEventHandler):
         
         elif event.event_type == 'created':
             #take any action here when a file is 1st created
-            print("Recieved created event - %s. "  % event.src_path)
+            print("Received created event - %s. "  % event.src_path)
         
         elif event.event_type == 'modified':
             #take any action to when file is modified 
@@ -46,7 +46,7 @@ class Handler(FileSystemEventHandler):
                     data["currently_playing"].append({"Artist": curr_playing[0], "Song": curr_playing[1],
                                                     "Album": curr_playing[2], "Time": datetime.datetime.now().strftime("%B %d %H:%M %P")})
                     f_out.write(json.dumps(data))
-            print(data)
+            #print(data)
             print("Received modified event - %s." % event.src_path)
 
 
