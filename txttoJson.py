@@ -5,8 +5,11 @@ import time
 import logging
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
+from watchdog.events import LoggingEventHandler
 
-##TODO:  Add file listener and SSH destination 
+##TODO:  fix watchdog to not duplicate, add a if statement that will handle adding new music
+## i.e if the file is already created "currently_playing" is already in Json file just append
+## the new music. We are using the json file as a database...
 class Watcher: 
     DIR_TO_WATCH = "./"
 
@@ -15,11 +18,11 @@ class Watcher:
     
     def run(self):
         event_handler = Handler()
-        self.observer.schedule(event_handler, self.DIR_TO_WATCH, recursive=True)
+        self.observer.schedule(event_handler, self.DIR_TO_WATCH, recursive=False)
         self.observer.start()
         try:
             while True:
-                time.sleep(5)
+                time.sleep(10)
         except:
             self.observer.stop()
             print("Error")
@@ -40,7 +43,8 @@ class Handler(FileSystemEventHandler):
         elif event.event_type == 'modified':
             #take any action to when file is modified 
             data = {"currently_playing": []}
-            with open("./ktswplay.txt", "r") as infile, open('currentlyPlaying.json', 'w') as f_out:
+            database = {"previously_played": []}
+            with open("./ktswplay.txt", "r") as infile, open('currentlyPlaying.json', 'a') as f_out:
                 for line in infile:
                     curr_playing = line.replace(' ', '').split(';')
                     data["currently_playing"].append({"Artist": curr_playing[0], "Song": curr_playing[1],

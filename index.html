@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+    <!-- Stylesheets: Bootstrap, Fonts/Font Awesome, and styles.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <title>KTSW Stream</title>
+</head>
+
+<body>
+
+    <div class="topnav">
+        <a class="active" href="http://ktsw.txstate.edu" target="_blank" id="logo">KTSW<br>89.9 the other side of radio</a>
+        <div class="topnav-right">
+            <a href="https://ktsw.txstate.edu/music/recenttracks.html" target="_blank">Recently Played</a>
+            <a href="https://ktswblog.net/" target="_blank">Blog</a>
+            <a href="https://ktsw.txstate.edu/about/contact.html" target="_blank">Contact</a>
+            <a href="https://ktsw.txstate.edu/about/overview.html" target="_blank">About</a>
+        </div>
+    </div>
+
+    <div class="container-audio-player">
+         <!-- now playing or currently playing, a script is used to dynamically load this from our ktswplay.txt file. -->
+        <p id="now-playing"></p>
+        <audio controls loop>
+            <source src="http://ktswlive.txstate.edu:8002/listen" type="audio/mpeg" />
+        </audio>
+    </div>
+
+   
+    <div>
+
+    <!-- Table for previously played
+    
+        <table id="prev-playing">
+            <tr>
+                <th>Time</th>
+                <th>Artist</th>
+                <th>Song</th>
+                <th>Record</th>
+            </tr>
+        </table>
+    -->
+
+    <div class="icon-bar">
+        <a href="https://www.facebook.com/ktsw899" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+        <a href="https://twitter.com/ktsw_899" class="twitter" target="_blank"><i class="fa fa-twitter"></i></a>
+        <a href="https://www.instagram.com/ktsw_899/" class="instagram" target="_blank"><i class="fa fa-instagram"></i></a>
+        <a href="https://www.youtube.com/channel/UC9mRQDo9wS3q-VOreSjAhWw" class="youtube" target="_blank"><i
+                class="fa fa-youtube"></i></a>
+    </div>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
